@@ -1,31 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'login_page.dart';
 
-void main() {
-  runApp(MyApp());
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(MaterialApp(
+    title: 'Kill Team',
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    home: LoginPage(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-       ),
-       home: Scaffold(
-         body: SafeArea(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: [
-               Text('Login Page',
-               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),)
-             ],
-           ),
-         ),
-      ),
-    );
-  }
-}
